@@ -10119,7 +10119,7 @@ var Jobs = function (_React$Component) {
       var formattedJobs = jobs.map(function (job) {
         return _react2.default.createElement(
           'ul',
-          { key: job.id, 'class': 'well' },
+          { key: job.id },
           _react2.default.createElement(
             'div',
             { 'class': 'company' },
