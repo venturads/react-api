@@ -6,7 +6,7 @@ class Jobs extends React.Component {
     const jobs = this.props.jobs;
     console.log(jobs);
     const formattedJobs = jobs.map((job) =>
-      <ul key={job.id} class="well"> 
+      <ul key={job.id} > 
         <div class="company">{job.company_name}</div>
         <div class="title">{job.title}</div>
       </ul>
