@@ -9,8 +9,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.16.2",
+    "lodash": "^4.17.4",
+    "prop-types": "^15.5.10",
     "react": "^15.6.0",
-    "react-dom": "^15.6.0"
+    "react-axios": "^1.0.2",
+    "react-dom": "^15.6.0",
+    "superagent": "^3.5.2"
   },
   "devDependencies": {
     "babel-core": "*",

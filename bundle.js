@@ -10102,59 +10102,95 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ItemLister = function (_React$Component) {
-    _inherits(ItemLister, _React$Component);
+var Jobs = function (_React$Component) {
+  _inherits(Jobs, _React$Component);
 
-    function ItemLister() {
-        _classCallCheck(this, ItemLister);
+  function Jobs() {
+    _classCallCheck(this, Jobs);
 
-        var _this = _possibleConstructorReturn(this, (ItemLister.__proto__ || Object.getPrototypeOf(ItemLister)).call(this));
+    return _possibleConstructorReturn(this, (Jobs.__proto__ || Object.getPrototypeOf(Jobs)).apply(this, arguments));
+  }
 
-        _this.state = {};
-        return _this;
+  _createClass(Jobs, [{
+    key: 'render',
+    value: function render() {
+      var jobs = this.props.jobs;
+      console.log(jobs);
+      var formattedJobs = jobs.map(function (job) {
+        return _react2.default.createElement(
+          'ul',
+          { key: job.id, 'class': 'well' },
+          _react2.default.createElement(
+            'div',
+            { 'class': 'company' },
+            job.company_name
+          ),
+          _react2.default.createElement(
+            'div',
+            { 'class': 'title' },
+            job.title
+          )
+        );
+      });
+      return _react2.default.createElement(
+        'div',
+        null,
+        formattedJobs
+      );
     }
+  }]);
 
-    _createClass(ItemLister, [{
-        key: 'componentWillMount',
-        value: function componentWillMount() {
-            var _this2 = this;
-
-            var url = "https://rubygems.org/api/v1/search.json?query=cucumber";
-            Request.get(url).then(function (reponse) {
-                _this2.setState({
-                    infos: response.body.Search,
-                    total: response.body.totalResults
-                });
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var infos = _.map(this.state.infos, function (info) {
-                return _react2.default.createElement(
-                    'li',
-                    null,
-                    info.name
-                );
-            });
-
-            return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement(
-                    'ul',
-                    null,
-                    ' ',
-                    infos
-                )
-            );
-        }
-    }]);
-
-    return ItemLister;
+  return Jobs;
 }(_react2.default.Component);
 
-_reactDom2.default.render(_react2.default.createElement(ItemLister, null), document.getElementById('app'));
+var App = function (_React$Component2) {
+  _inherits(App, _React$Component2);
+
+  function App() {
+    _classCallCheck(this, App);
+
+    var _this2 = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+
+    _this2.state = {
+      jobs: []
+    };
+    var myUrl = "https://codepen.io/jobs.json";
+    fetch(myUrl).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      return _this2.setState({ jobs: json.jobs });
+    });
+    return _this2;
+  }
+
+  _createClass(App, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'app' },
+        _react2.default.createElement(
+          'div',
+          { className: 'header' },
+          _react2.default.createElement(
+            'h1',
+            { id: 'header-title' },
+            'Job Postings'
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'content' },
+          _react2.default.createElement(Jobs, { jobs: this.state.jobs })
+        )
+      );
+    }
+  }]);
+
+  return App;
+}(_react2.default.Component);
+
+_reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('root'));
 
 /***/ }),
 /* 89 */

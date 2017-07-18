@@ -1,34 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch } from 'react-axios';
 
-class ItemLister extends React.Component {
-    constructor(){
-        super();
-        this.state={};
-    }
-    componentWillMount(){
-        var url="https://rubygems.org/api/v1/search.json?query=cucumber";
-        Request.get(url).then((reponse)=>{
-            this.setState({
-                infos:response.body.Search,
-                total:response.body.totalResults
-            });
-        });
-    }
+//var url='https://rubygems.org/api/v1/search.json?query=cucumber';
 
-    render(){
-        var infos=_.map(this.state.infos, (info)=>{
-            return <li>{info.name}</li>;
-        });
-
-        return(
-        <div>
-        <ul> {infos}</ul>
-
-        </div>
-        )
-    }
-
+class App extends React.Component{
+    render() {
+     return (
+      <div>
+        <Get url="https://codepen.io/jobs.json">
+          {(error, response, isLoading) => {
+            if(error) {
+              return (<div>Something bad happened: {error.message}</div>)
+            }
+            else if(isLoading) {
+              return (<div>Loading...</div>)
+            }
+            else if(response !== null) {
+              return (<div>{response.data.message}</div>)
+            }
+            return (<div>Default message before request is made.</div>)
+          }}
+        </Get>
+      </div>
+    )}
 }
 
-ReactDOM.render(<ItemLister />,document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));

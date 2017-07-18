@@ -2,7 +2,7 @@ var path = require("path");
 var webpack = require("webpack");
 
 module.exports = {
-    entry: './appapi.js',
+    entry: './appapi3.js',
     output: {
         path: __dirname,
         filename: 'bundle.js'
