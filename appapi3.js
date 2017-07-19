@@ -6,10 +6,12 @@ class Jobs extends React.Component {
     const jobs = this.props.jobs;
     console.log(jobs);
     const formattedJobs = jobs.map((job) =>
-      <ul key={job.id} > 
-        <div class="company">{job.company_name}</div>
-        <div class="title">{job.title}</div>
-      </ul>
+      <li key={job.id} className="well"> 
+        <a href={job.url} target="_blank">
+          <div class="company">{job.company_name}</div>
+          <div class="title">{job.title}</div>
+        </a>
+      </li>
     );
     return(
       <div>{formattedJobs}</div>
@@ -35,7 +37,7 @@ class App extends React.Component {
       <div className="header">
         <h1 id="header-title">Job Postings</h1>
       </div>
-      <div className="content">
+      <div className="content col-md-4">
         <Jobs jobs={this.state.jobs}/>
       </div>
     </div>

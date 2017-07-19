@@ -10118,17 +10118,21 @@ var Jobs = function (_React$Component) {
       console.log(jobs);
       var formattedJobs = jobs.map(function (job) {
         return _react2.default.createElement(
-          'ul',
-          { key: job.id },
+          'li',
+          { key: job.id, className: 'well' },
           _react2.default.createElement(
-            'div',
-            { 'class': 'company' },
-            job.company_name
-          ),
-          _react2.default.createElement(
-            'div',
-            { 'class': 'title' },
-            job.title
+            'a',
+            { href: job.url, target: '_blank' },
+            _react2.default.createElement(
+              'div',
+              { 'class': 'company' },
+              job.company_name
+            ),
+            _react2.default.createElement(
+              'div',
+              { 'class': 'title' },
+              job.title
+            )
           )
         );
       });
@@ -10180,8 +10184,12 @@ var App = function (_React$Component2) {
         ),
         _react2.default.createElement(
           'div',
-          { className: 'content' },
-          _react2.default.createElement(Jobs, { jobs: this.state.jobs })
+          { className: 'content col-md-4' },
+          _react2.default.createElement(
+            'ul',
+            null,
+            _react2.default.createElement(Jobs, { jobs: this.state.jobs })
+          )
         )
       );
     }
