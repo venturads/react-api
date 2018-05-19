@@ -10135,6 +10135,11 @@ var Jobs = function (_React$Component) {
                 'div',
                 { 'class': 'title' },
                 job.title
+              ),
+              _react2.default.createElement(
+                'div',
+                { 'class': 'title' },
+                'city'
               )
             )
           )

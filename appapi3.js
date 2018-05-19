@@ -11,6 +11,7 @@ class Jobs extends React.Component {
             <a href={job.url} target="_blank">
               <div class="company">{job.company_name}</div>
               <div class="title">{job.title}</div>
+              <div class="title">city</div>
             </a>
           </li>
         </ul>
